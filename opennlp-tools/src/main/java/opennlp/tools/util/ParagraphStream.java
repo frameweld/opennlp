@@ -53,4 +53,16 @@ public class ParagraphStream extends FilterObjectStream<String, String> {
         return null;
     }
   }
+
+  public String readImmediately() throws IOException {
+    return samples.read();
+  }
+
+  public String readImmediately(boolean blockInput) throws IOException {
+    if (blockInput) {
+      ((PlainTextByTimeStream) samples).setBlockingInput();
+    }
+
+    return samples.read();
+  }
 }
