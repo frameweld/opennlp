@@ -46,7 +46,7 @@ public final class SentenceDetectorStreamTool extends BasicCmdLineTool {
   private boolean stripNewline = false;
 
   public String getShortDescription() {
-    return "learnable sentence detector test";
+    return "learnable sentence detector for streaming content";
   }
 
   public String getHelp() {
