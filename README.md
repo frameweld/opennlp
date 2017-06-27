@@ -15,6 +15,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
+Key Differences from Apache OpenNLP
+===========
+-Commit `b5b6d5c27443e1837b80b089206aad480852cd1c` has been skipped, not merged.  If this ever causes issues, refer to that commit.  This is because this commit introduced undesired changes to how newline characters are handled.
+-New tool added `SentenceDetectorStream` added to enable real-time sentence detection from streaming input.
+-New command line argument `--strip-newline` added to tool `SentenceDetector`
+
 Welcome to Apache OpenNLP!
 ===========
 
