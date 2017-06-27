@@ -36,12 +36,14 @@ import opennlp.tools.util.PlainTextByLineStream;
  */
 public final class SentenceDetectorTool extends BasicCmdLineTool {
 
+  private boolean stripNewline = false;
+
   public String getShortDescription() {
     return "learnable sentence detector";
   }
 
   public String getHelp() {
-    return "Usage: " + CLI.CMD + " " + getName() + " model < sentences";
+    return "Usage: " + CLI.CMD + " " + getName() + " [--strip-newline] model < sentences";
   }
 
   /**
@@ -50,12 +52,32 @@ public final class SentenceDetectorTool extends BasicCmdLineTool {
    * A newline will be treated as a paragraph boundary.
    */
   public void run(String[] args) {
+    boolean validParams = false;
 
-    if (args.length != 1) {
+    String modelFile = null;
+
+    for (int i = 0; i < args.length; i++) {
+      switch (args[i]) {
+        case "--strip-newline":
+          stripNewline = true;
+
+          break;
+        default:
+          if (modelFile == null) {
+            modelFile = args[i];
+            validParams = true;
+          } else {
+            i = args.length;
+            validParams = false;
+          }
+      }
+    }
+
+    if (!validParams) {
       System.out.println(getHelp());
     } else {
 
-      SentenceModel model = new SentenceModelLoader().load(new File(args[0]));
+      SentenceModel model = new SentenceModelLoader().load(new File(modelFile));
 
       SentenceDetectorME sdetector = new SentenceDetectorME(model);
 
@@ -70,8 +92,15 @@ public final class SentenceDetectorTool extends BasicCmdLineTool {
         while ((para = paraStream.read()) != null) {
 
           String[] sents = sdetector.sentDetect(para);
-          for (String sentence : sents) {
-            System.out.println(sentence);
+
+          if (stripNewline) {
+            for (String sentence : sents) {
+              System.out.println(sentence.replace("\r", "").replace("\n", ""));
+            }
+          } else {
+            for (String sentence : sents) {
+              System.out.println(sentence);
+            }
           }
 
           perfMon.incrementCounter(sents.length);

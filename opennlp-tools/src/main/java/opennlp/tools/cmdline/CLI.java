@@ -66,6 +66,7 @@ import opennlp.tools.cmdline.postag.POSTaggerTrainerTool;
 import opennlp.tools.cmdline.sentdetect.SentenceDetectorConverterTool;
 import opennlp.tools.cmdline.sentdetect.SentenceDetectorCrossValidatorTool;
 import opennlp.tools.cmdline.sentdetect.SentenceDetectorEvaluatorTool;
+import opennlp.tools.cmdline.sentdetect.SentenceDetectorStreamTool;
 import opennlp.tools.cmdline.sentdetect.SentenceDetectorTool;
 import opennlp.tools.cmdline.sentdetect.SentenceDetectorTrainerTool;
 import opennlp.tools.cmdline.tokenizer.DictionaryDetokenizerTool;
@@ -116,6 +117,7 @@ public final class CLI {
 
     // Sentence detector
     tools.add(new SentenceDetectorTool());
+    tools.add(new SentenceDetectorStreamTool());
     tools.add(new SentenceDetectorTrainerTool());
     tools.add(new SentenceDetectorEvaluatorTool());
     tools.add(new SentenceDetectorCrossValidatorTool());
