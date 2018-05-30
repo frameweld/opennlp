@@ -51,7 +51,7 @@ public final class SentenceDetectorStreamTool extends BasicCmdLineTool {
 
   public String getHelp() {
     return "Usage: " + CLI.CMD + " " + getName() 
-           + " [--strip-newline] [--max-idle <millis>] [--read-offset <millis>] model < sentences";
+           + " [--strip-newline] [--max-idle <millis>] [--read-offset <millis>] model > sentences";
   }
 
   /**

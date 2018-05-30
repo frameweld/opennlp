@@ -43,7 +43,7 @@ public final class SentenceDetectorTool extends BasicCmdLineTool {
   }
 
   public String getHelp() {
-    return "Usage: " + CLI.CMD + " " + getName() + " [--strip-newline] model < sentences";
+    return "Usage: " + CLI.CMD + " " + getName() + " [--strip-newline] model > sentences";
   }
 
   /**
