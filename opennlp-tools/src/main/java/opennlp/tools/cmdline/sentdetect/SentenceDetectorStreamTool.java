@@ -181,7 +181,7 @@ public final class SentenceDetectorStreamTool extends BasicCmdLineTool {
               } else {
                 if (stripNewline) {
                   for (int i = 0; i < sents.length - 1; i++) {
-                    System.out.println(sents[i].replace("\r", "").replace("\n", ""));
+                    System.out.println(sents[i].replace("\r", " ").replace("\n", " "));
                   }
                 } else {
                   for (int i = 0; i < sents.length - 1; i++) {
